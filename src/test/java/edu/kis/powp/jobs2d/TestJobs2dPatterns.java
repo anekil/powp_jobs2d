@@ -9,8 +9,12 @@ import edu.kis.legacy.drawer.panel.DefaultDrawerFrame;
 import edu.kis.legacy.drawer.panel.DrawPanelController;
 import edu.kis.legacy.drawer.shape.LineFactory;
 import edu.kis.powp.appbase.Application;
+import edu.kis.powp.command.ComplexCommand;
+import edu.kis.powp.command.OperateToCommand;
+import edu.kis.powp.command.SetPositionCommand;
 import edu.kis.powp.jobs2d.drivers.adapter.LineDrawerAdapter;
 import edu.kis.powp.jobs2d.drivers.adapter.DriverToDrawerAdapter;
+import edu.kis.powp.jobs2d.events.Figures;
 import edu.kis.powp.jobs2d.events.SelectChangeVisibleOptionListener;
 import edu.kis.powp.jobs2d.events.SelectTestFigureOptionListener;
 import edu.kis.powp.jobs2d.features.DrawerFeature;
@@ -25,13 +29,11 @@ public class TestJobs2dPatterns {
 	 * @param application Application context.
 	 */
 	private static void setupPresetTests(Application application) {
-		SelectTestFigureOptionListener selectTestFigure1OptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager(), 1);
-		SelectTestFigureOptionListener selectTestFigure2OptionListener = new SelectTestFigureOptionListener(
-				DriverFeature.getDriverManager(), 2);
-
-		application.addTest("Figure Joe 1", selectTestFigure1OptionListener);
-		application.addTest("Figure Joe 2", selectTestFigure2OptionListener);
+		application.addTest("Figure Joe 1", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), Figures.JOE1));
+		application.addTest("Figure Joe 2", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), Figures.JOE2));
+		application.addTest("Figure Aneta 1", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), Figures.ANETA1));
+		application.addTest("Square", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), Figures.SQUARE));
+		application.addTest("Rectangle", new SelectTestFigureOptionListener(DriverFeature.getDriverManager(), Figures.RECTANGLE));
 	}
 
 	/**
